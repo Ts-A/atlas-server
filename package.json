@@ -1,0 +1,26 @@
+{
+  "name": "atlas-server",
+  "version": "1.0.0",
+  "description": "The source code of atlas backend.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ts-A/atlas-server.git"
+  },
+  "author": "T S Ajeet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ts-A/atlas-server/issues"
+  },
+  "homepage": "https://github.com/Ts-A/atlas-server#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "mongoose": "^5.13.5",
+    "morgan": "^1.10.0"
+  }
+}
