@@ -39,10 +39,11 @@ router.delete('/:user_id', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
-    const user = new User({ ...req.body });
+    const userData = req.body.user;
+    const user = new User(userData);
 
     const salt = genSaltSync(8);
-    const hash = hashSync(req.body.password, salt);
+    const hash = hashSync(userData.password, salt);
     user.password = hash;
     await user.save();
 
@@ -55,9 +56,10 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const userData = req.body.user;
+    const user = await User.findOne({ username: userData.username });
 
-    if (!user || !compareSync(req.body.password, user.password))
+    if (!user || !compareSync(userData.password, user.password))
       throw new Error('Invalid Credentials');
 
     res.status(200).json({ user });
