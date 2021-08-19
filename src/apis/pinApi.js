@@ -24,7 +24,9 @@ router.get('/:pin_id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const pin = new Pin({ ...req.body });
+    const pinData = req.body.pin;
+    if (!pinData) throw new Error('No pin object found in the request found');
+    const pin = new Pin(pinData);
     await pin.save();
     res.status(200).json({ pin });
   } catch (error) {

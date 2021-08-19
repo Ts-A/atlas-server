@@ -4,9 +4,11 @@ require('./config/database');
 const express = require('express');
 const userRouter = require('./src/apis/userApi');
 const pinRouter = require('./src/apis/pinApi');
+const morgan = require('morgan');
 
 const app = express();
 
+app.use(morgan('combined'));
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
