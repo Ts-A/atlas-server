@@ -15,12 +15,14 @@ const UserSchema = mongoose.Schema(
     password: {
       type: String,
       required: true,
+      select: false,
     },
     color: {
       type: String,
       required: false,
       default: '#ffffff',
     },
+    tokens: [{ type: String, select: false }],
     pins: [
       {
         ref: 'Pin',
